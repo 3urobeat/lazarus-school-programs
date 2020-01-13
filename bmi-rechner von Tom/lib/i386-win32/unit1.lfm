@@ -1,0 +1,148 @@
+object Form1: TForm1
+  Left = 344
+  Height = 401
+  Top = 222
+  Width = 403
+  Caption = 'BMI-Index Rechner'
+  ClientHeight = 381
+  ClientWidth = 403
+  Menu = MainMenu1
+  LCLVersion = '1.0.12.0'
+  object Panel1: TPanel
+    Left = 80
+    Height = 47
+    Top = 16
+    Width = 245
+    Caption = 'BMI-Index Rechner'
+    TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 56
+    Height = 23
+    Top = 80
+    Width = 299
+    Caption = 'Daten her oder NSA wird kontaktiert'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -19
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+  end
+  object kgEdit: TEdit
+    Left = 253
+    Height = 23
+    Top = 120
+    Width = 102
+    TabOrder = 1
+  end
+  object Label2: TLabel
+    Left = 56
+    Height = 16
+    Top = 120
+    Width = 85
+    Caption = 'Ihr Gewicht (kg)'
+    ParentColor = False
+  end
+  object mEdit: TEdit
+    Left = 253
+    Height = 23
+    Top = 152
+    Width = 102
+    TabOrder = 2
+  end
+  object Label3: TLabel
+    Left = 56
+    Height = 16
+    Top = 152
+    Width = 78
+    Caption = 'Ihre Größe (m)'
+    ParentColor = False
+  end
+  object Berechnen: TButton
+    Left = 56
+    Height = 29
+    Top = 280
+    Width = 109
+    Caption = 'Berechnen'
+    OnClick = BerechnenClick
+    TabOrder = 3
+  end
+  object clear: TButton
+    Left = 246
+    Height = 29
+    Top = 336
+    Width = 109
+    Caption = 'Löschen'
+    OnClick = clearClick
+    TabOrder = 4
+    Visible = False
+  end
+  object PanelResult: TPanel
+    Left = 246
+    Height = 32
+    Top = 272
+    Width = 109
+    TabOrder = 5
+    Visible = False
+  end
+  object Label5: TLabel
+    Left = 56
+    Height = 20
+    Top = 272
+    Width = 160
+    Caption = 'Ihr BMI-Index beträgt:'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -17
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+    Visible = False
+  end
+  object aEdit: TEdit
+    Left = 253
+    Height = 23
+    Top = 184
+    Width = 102
+    TabOrder = 6
+  end
+  object Label4: TLabel
+    Left = 56
+    Height = 16
+    Top = 184
+    Width = 88
+    Caption = 'Ihr Alter (Jahren)'
+    ParentColor = False
+  end
+  object Notiz: TLabel
+    Left = 56
+    Height = 46
+    Top = 216
+    Width = 236
+    Caption = 'Gewicht und Größe sind Pflichtfelder.'#13#10'Notiz: Tragen sie kein Alter ein, kann ihr BMI '#13#10'nicht bewertet werden.'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 56
+    Height = 1
+    Top = 300
+    Width = 1
+    ParentColor = False
+  end
+  object MainMenu1: TMainMenu
+    object MenuItem1: TMenuItem
+      Caption = 'Programm'
+      object MenuItem1Info: TMenuItem
+        Caption = 'Information'
+        OnClick = MenuItem1InfoClick
+      end
+      object MenuItem1Close: TMenuItem
+        Caption = 'Schließen'
+        OnClick = MenuItem1CloseClick
+      end
+    end
+  end
+end

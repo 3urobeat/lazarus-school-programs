@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Compiler Value="\\ssv-as02.schule.sdw\Lazarus\fpc\2.6.2\bin\i386-win32\fpc.exe" Date="1125670419"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -WG -vewnhi -FiJ:\Desktop\fafzarus\rechner\lib\i386-win32 -Fu\\ssv-as02.schule.sdw\Lazarus\lcl\units\i386-win32\win32 -Fu\\ssv-as02.schule.sdw\Lazarus\lcl\units\i386-win32 -Fu\\ssv-as02.schule.sdw\Lazarus\components\lazutils\lib\i386-win32 -Fu\\ssv-as02.schule.sdw\Lazarus\packager\units\i386-win32 -FuJ:\Desktop\fafzarus\rechner\ -FUJ:\Desktop\fafzarus\rechner\lib\i386-win32\ -l -dLCL -dLCLwin32 project1.lpr"/>
+</CONFIG>

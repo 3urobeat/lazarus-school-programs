@@ -1,0 +1,152 @@
+unit Unit1;
+//Autor: Tom Goritz 15.08.2019
+//Beschreibung: BMI Rechner. Rechnet ihren BMI aus und gibt Empfehlungen.
+//Besonderheiten: Es wurden keine extra Variablen benutzt.
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  ExtCtrls, Menus;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    Berechnen: TButton;
+    clear: TButton;
+    kgEdit: TEdit;
+    Label4: TLabel;
+    Label6: TLabel;
+    Notiz: TLabel;
+    mEdit: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    MainMenu1: TMainMenu;
+    aEdit: TEdit;
+    MenuItem1: TMenuItem;
+    MenuItem1Info: TMenuItem;
+    MenuItem1Close: TMenuItem;
+    Panel1: TPanel;
+    PanelResult: TPanel;
+    procedure BerechnenClick(Sender: TObject);
+    procedure clearClick(Sender: TObject);
+    procedure MenuItem1CloseClick(Sender: TObject);
+    procedure MenuItem1InfoClick(Sender: TObject);
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+function bmicalc(BMI,BMImin,BMImax:string):string;
+begin
+     if (BMI <= BMImax) AND (BMI >= BMImin) then
+        begin
+          result := 'Ihr BMI entspricht den Empfehlungen.';
+          exit;
+        end;
+     if BMI > BMImax then
+        begin
+          result := 'Sie sollten abnehmen.' + sLineBreak + 'Ihr empfohlener BMI liegt zwischen ' + BMImin + ' und ' + BMImax + '.';
+          exit;
+        end;
+     if BMI < BMImin then
+        begin
+          result := 'Sie sollten zunehmen.' + sLineBreak + 'Ihr empfohlener BMI liegt zwischen ' + BMImin + ' und ' + BMImax + '.';
+          exit;
+        end;
+end;
+
+procedure TForm1.MenuItem1InfoClick(Sender: TObject);
+begin
+     ShowMessage('Programm von Tom' + sLineBreak + sLineBreak +'15.08.2019' + sLineBreak + sLineBreak + 'BMI Empfehlungen sollten nicht beleidigend genommen werden.');
+end;
+
+procedure TForm1.MenuItem1CloseClick(Sender: TObject);
+begin
+     close;
+end;
+
+procedure TForm1.BerechnenClick(Sender: TObject);
+begin
+     //Abfrage ob Edit Felder leer sind
+     if kgEdit.text = '' then
+         begin
+              ShowMessage('Bitte tragen sie ihr Gewicht ein!');
+              kgEdit.setFocus;
+              exit;
+         end;
+     if mEdit.text = '' then
+         begin
+              ShowMessage('Bitte tragen sie ihre Größe ein!');
+              mEdit.setFocus;
+              exit;
+         end;
+
+     //Rechenvorgang
+     try
+        //String kürzen und BMI ausrechnen
+        PanelResult.caption := Copy(FloatToStr(StrToFloat(kgEdit.text) / sqr(StrToFloat(mEdit.text))), 1, 5);
+        case aEdit.text of
+             '0' .. '18':
+                  Label6.caption := 'BMI Empfehlung ab 19 Jahren vorhanden.';
+             '19' .. '24':
+                  Label6.caption := bmicalc(PanelResult.caption, '19', '24');
+             '25' .. '34':
+                  Label6.caption := bmicalc(PanelResult.caption, '20', '25');
+             '35' .. '44':
+                  Label6.caption := bmicalc(PanelResult.caption, '21', '26');
+             '45' .. '54':
+                  Label6.caption := bmicalc(PanelResult.caption, '22', '27');
+             '55' .. '64':
+                  Label6.caption := bmicalc(PanelResult.caption, '23', '28');
+             '65' .. '99':
+                  Label6.caption := bmicalc(PanelResult.caption, '24', '29');
+        end;
+     Except
+        ShowMessage('Ein Fehler ist aufgetreten. Bitte Eingabe korrekt wiederholen.');
+        kgEdit.setFocus;
+        exit;
+     end;
+
+     Berechnen.top       := 336;
+     Label5.Visible      := true;
+     PanelResult.Visible := true;
+     clear.Visible       := true;
+
+     if aEdit.text = '' then
+        Label6.caption := 'Keine Bewertung möglich.' + sLineBreak + 'Feld Alter leer.';
+
+     if Label6.caption = '' then
+        Label6.caption := 'Keine Bewertung möglich.' + sLineBreak + 'Eingabe des Alters überprüfen.';
+end;
+
+procedure TForm1.clearClick(Sender: TObject);
+begin
+  kgEdit.text         := '';
+  mEdit.text          := '';
+  aEdit.text          := '';
+  PanelResult.caption := '';
+  Label6.caption      := '';
+  clear.Visible       := false;
+  Label5.Visible      := false;
+  PanelResult.Visible := false;
+  Berechnen.top       := 280;
+end;
+
+end.

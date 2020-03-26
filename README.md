@@ -1,6 +1,6 @@
 # lazarus-school-programs  
 
-**If you want, you can donate a few bucks on my [Patreon](https://www.patreon.com/3urobeat)! I would really appreciate it!**
+**If you want, you can donate a few bucks on my [Patreon](https://www.patreon.com/3urobeat) or [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VAVVKE4L962H6&source=url)! I would really appreciate it!**
 
 Basic Lazarus programs we had to do in school. This repo is just for storing them.  
 There were also other small programs but I decided to only put the programs up that got more attention by me.  
